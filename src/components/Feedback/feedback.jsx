@@ -1,8 +1,8 @@
-
+import PropTypes from 'prop-types';
 import { Button } from "./feedback.styled";
 export const FeedbackOptions = ( {options, onLeaveFeedback }) => {
     const keys = Object.keys(options)
-    
+  
   return (
     <div style={{
       display: "flex",
@@ -14,3 +14,12 @@ export const FeedbackOptions = ( {options, onLeaveFeedback }) => {
  
   
 }
+
+FeedbackOptions.propTypes = {
+  onLeaveFeedback: PropTypes.func,
+  options: PropTypes.objectOf(PropTypes.number).isRequired,
+  option: PropTypes.oneOf(['good', 'neutral', 'bad'])
+    
+    
+
+} 

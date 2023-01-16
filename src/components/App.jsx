@@ -6,18 +6,22 @@ export class App extends Component {
   state = {
   good: 0,
   neutral: 0,
-  bad: 0
+    bad: 0,
+  
   }
   
 countTotalFeedback = ({ good, neutral, bad } = this.state) => {
    return good+bad+neutral
   }
-  countPositiveFeedbackPercentage = ({ good} = this.state) => {
-    return(good*100/this.countTotalFeedback()).toFixed(0)
+  countPositiveFeedbackPercentage = ({ good } = this.state) => { if
+    (this.countTotalFeedback()) 
+    {return (good * 100 / this.countTotalFeedback()).toFixed(0)} else {return}
   }
   
   onLeaveFeedback = (feedback) => {
     this.setState(prevState => {
+      
+
       return {
         [feedback]: prevState[feedback] + 1
       }
@@ -39,7 +43,7 @@ countTotalFeedback = ({ good, neutral, bad } = this.state) => {
         
         
         <Section title="Statistacs">
-        <Statistics good={good} neutral={neutral} bad={bad} total={this.countTotalFeedback()} positivePercentage={this.countPositiveFeedbackPercentage()}></Statistics></Section>
+        <Statistics good={good} neutral={neutral} bad={bad} total={this.countTotalFeedback()} positivePercentage={Number(this.countPositiveFeedbackPercentage())}></Statistics></Section>
       </div>
   );}
 };

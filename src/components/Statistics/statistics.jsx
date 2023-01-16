@@ -1,3 +1,5 @@
+
+import PropTypes from 'prop-types';
 import { Option, Total } from "./Statistics.styled"
 export const Statistics = ({good,neutral,bad, total,positivePercentage} ) => {
   return (
@@ -17,4 +19,16 @@ const Notification = ({message}) => {
   return (
     <div>{message }</div>
    )
- }
+}
+Statistics.propTypes = {
+  good: PropTypes.number,
+  neutral: PropTypes.number,
+  bad: PropTypes.number,
+  total: PropTypes.number,
+  positivePercentage: PropTypes.number,
+
+}
+ 
+Notification.propTypes = {
+  message:PropTypes.string,
+}
